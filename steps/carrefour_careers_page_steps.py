@@ -1,22 +1,22 @@
 from behave import *
 
-@when('Careers page: I click  on "<alege oras>" from "Alege oras" box')
+@when('Careers page: I click  on "{alege_oras}" from Alege_oras box')
 def step_impl(context, alege_oras):
-    context.careers_page.choose_search_value(alege_oras)
+    context.careers_page.choose_city_from_city_box(alege_oras)
 
 
-@when('Careers page: I click on "<alege magazin>" from "Alege magazin" box')
+@when('Careers page: I click on "{alege_magazin}" from Alege_magazin box')
 def step_impl(context, alege_magazin):
-    context.careers_page.choose_search_value(alege_magazin)
+    context.careers_page.choose_store_from_city_box(alege_magazin)
 
 @when('Careers page: I click on Looking for a job button')
 def step_impl(context):
-    context.careers_page.click_on_looking_for_a_job_button()
+    context.careers_page.click_search_job_button()
 
 
-@then('Careers page: I have at least "<no_of_results>" results returned')
+@then('Careers page: I have at least "{no_of_results}" results returned')
 def step_impl(context, no_of_results):
-    context.careers_page.check_search_results(no_of_results)
+    context.careers_page.check_job_search_results(no_of_results)
 
 
 

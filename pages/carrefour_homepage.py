@@ -1,6 +1,7 @@
-from time import sleep
+from selenium.webdriver.support.wait import WebDriverWait
 from pages.base_page import Base_page
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class Home_page(Base_page):
@@ -12,7 +13,7 @@ class Home_page(Base_page):
     LOGIN_BUTTON = (By.XPATH, '//a[@title="login"]')
     MY_BASKET_BUTTON = (By.XPATH, '//a[@role="button" and @title="minicart"]')
     CAREERS_LINK = (By.XPATH, '//a[@href= "/corporate/cariere" and @title="Cariere">Ca]')
-    ADD_TO_SHOPPING_CART_BUTTON = (By.XPATH,'//button[@title="Adauga in cos"][1]')
+    ADD_TO_SHOPPING_CART_BUTTON = (By.XPATH,'//ol[@class="products list"]/li[1]//button[@type="submit"]')
 
     def navigate_to_homepage(self):
         self.chrome.get(self.HOMEPAGE)
@@ -45,7 +46,8 @@ class Home_page(Base_page):
         assert "login" in current_url, f"Error: expected url to contain login. Actual URL: {current_url}"
 
     def add_product_to_shopping_cart(self):
-        self.chrome.find_element(*self.ADD_TO_SHOPPING_CART_BUTTON).click()
+        cart_button = WebDriverWait(self.chrome, 50).until(EC.element_to_be_clickable(self.ADD_TO_SHOPPING_CART_BUTTON))
+        cart_button.click()
 
 
 

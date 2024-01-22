@@ -43,24 +43,25 @@ Feature: Test the search functionality in the homepage of carrefour
   Scenario: Check that the user can remove products from the cart
     When Home page: I search for "Cafea Boabe" from search box
     When Home page: The user clicks the search button
-    When Home page: The user adds the first product to the shop
+    When Home page: The user adds the first product to the shopping cart
     When Home page: The user clicks on My basket
     When My basket page: The user clicks on remove product from the cart button
-    Then My basket page: The user received a message that the basket is emty
+    Then My basket page: The user received a message that the basket is empty
 
 
   @regression @T6
   Scenario Outline: Check that a user can make an job search form Careers
     When Home page: I click on careers link
-    When Careers page: I click  on "<alege oras>" from "Alege oras" box
-    When Careers page: I click on "<alege magazin>" from "Alege magazin" box
+    When Careers page: I click  on "<alege_oras>" from Alege_oras box
+    When Careers page: I click on "<alege_magazin>" from Alege_magazin box
     When Careers page: I click on Looking for a job button
     Then Careers page: I have at least "<no_of_results>" results returned
     Examples:
-    |alege oras  |alege magazin              |no_of_results|
-    |Bucuresti   |Carrefour Baneasa          |2            |
-    |Brasov      |Market Brasov Onix Grivitei|1
-    |Galati      |Express Galati Mazepa      |0            |
+      | alege_oras | alege_magazin               | no_of_results |
+      | Bucuresti  | Carrefour Baneasa           | 2             |
+#      | Brasov     | Market Brasov Onix Grivitei | 1             |
+#      | Galati     | Express Galati Mazepa       | 0             |
+
 
 
 

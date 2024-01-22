@@ -35,23 +35,17 @@ def step_impl(context):
     context.home_page.click_add_basket_button()
 
 
-
 @when("Home page: The user adds the first product to the shopping cart")
 def step_impl(context):
     context.home_page.add_product_to_shopping_cart()
 
 @when('Home page: The user clicks on My basket')
 def step_impl(context):
-    context.home_page.click_on_my_basket()
+    context.home_page.click_my_basket_button()
 
-@when(' My basket page: The user clicks on remove product from the cart button')
+@when('Home page: I click on careers link')
 def step_impl(context):
-    context.my_basket_page.click_on_the_delete_button()
-
-@then('My basket page: The product is removed ')
-def step_impl(context):
-    context.my_basket_page.then_product_has_been_removed()
-
+    context.home_page.click_on_carers_link()
 
 
 
